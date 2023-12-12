@@ -14,7 +14,7 @@ public class MainController {
     @Autowired
     private MainService service;
 
-    @GetMapping("sum")
+    @GetMapping("/sum")
     public ResponseEntity getSum(@RequestParam(name = "a") String aStr, @RequestParam(name = "b") String bStr){
         int a = 0;
         int b = 0;
