@@ -10,6 +10,7 @@
 	</parent>
 	<groupId>com.kolya</groupId>
 	<artifactId>ci-cd-task</artifactId>
+	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>ci-cd-task</name>
 	<description>ci-cd-task</description>
@@ -27,6 +28,7 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 	</dependencies>
 
 	<build>
@@ -66,8 +68,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-
-
 
 		</plugins>
 	</build>
