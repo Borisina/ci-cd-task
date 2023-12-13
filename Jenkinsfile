@@ -30,6 +30,12 @@ pipeline {
                 }
             }
         }
+
+        stage('JaCoCo'){
+            steps{
+                jacoco()
+            }
+        }
     }
 }
 
