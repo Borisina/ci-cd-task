@@ -1,9 +1,22 @@
 pipeline {
     agent any
+    tools {
+            maven 'MavenLocal'
+            jdk 'jdk17'
+        }
     stages {
-        stage('Build') {
+        stage ('Initialize') {
             steps {
-               echo 'This is a minimal pipeline.'
+                sh '''
+                    echo "PATH = ${PATH}"
+                    echo "M2_HOME = ${M2_HOME}"
+                '''
+            }
+        }
+
+        stage ('Build') {
+            steps {
+                echo 'This is a minimal pipeline.'
             }
         }
     }
