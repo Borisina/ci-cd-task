@@ -41,4 +41,12 @@ class MainControllerTest {
             Assertions.assertEquals(expected[i],actualResult);
         }
     }
+
+    @Test
+    void getAll() {
+    }
+
+    @Test
+    void getSum() {
+    }
 }

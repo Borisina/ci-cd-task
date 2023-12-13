@@ -18,4 +18,12 @@ class MainServiceTest {
             Assertions.assertEquals(expectedResults[i],actualResult);
         }
     }
+
+    @Test
+    void getAllRecords() {
+    }
+
+    @Test
+    void addRecord() {
+    }
 }
