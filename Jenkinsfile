@@ -23,25 +23,18 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis'){
-            steps{
-                withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'token-for-jenkins'){
-                    bat 'mvn sonar:sonar'
-                }
-            }
-        }
-
         stage('JaCoCo'){
             steps{
                 jacoco()
             }
         }
 
-        stage('Quality Gate'){
+        stage('SonarQube Analysis'){
             steps{
                 withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'token-for-jenkins'){
-                    waitForQualityGate abortPipeline: true
+                    bat 'mvn sonar:sonar'
                 }
+                waitForQualityGate abortPipeline: true
             }
         }
 
