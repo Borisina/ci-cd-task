@@ -14,6 +14,12 @@ public class MainController {
     @Autowired
     private MainService service;
 
+    @GetMapping("/")
+    public ResponseEntity getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(service.getAllRecords());
+    }
+
+
     @GetMapping("/sum")
     public ResponseEntity getSum(@RequestParam(name = "a") String aStr, @RequestParam(name = "b") String bStr){
         int a = 0;
@@ -25,6 +31,11 @@ public class MainController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong parameters!");
         }
         int result = service.getSum(a,b);
+        String sign = "+";
+        if (b<0){
+            sign="";
+        }
+        service.addRecord(a+sign+b+"="+result);
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
