@@ -31,15 +31,20 @@ public class MainController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong parameters!");
         }
         int result = service.getSum(a,b);
-        String sign = "+";
-        if (b<0){
-            sign="";
-        }
-        service.addRecord(a+sign+b+"="+result);
+        service.addRecord(createStr(a,b,result));
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
     public int parseNum(String num) throws NumberFormatException{
         return Integer.parseInt(num);
+    }
+
+    public String createStr(int a, int b, int result){
+        String sign = "+";
+        if (b<0){
+            sign="";
+        }
+        String resStr = a+sign+b+"="+result;
+        return resStr;
     }
 }

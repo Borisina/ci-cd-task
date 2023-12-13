@@ -28,4 +28,17 @@ class MainControllerTest {
             );
         }
     }
+
+    @Test
+    void createStr() {
+        MainController controller = new MainController();
+        int[] aArr = {1,2,3};
+        int[] bArr = {2,0,-6};
+        int[] result = {3,2,-3};
+        String[] expected = {"1+2=3", "2+0=2", "3-6=-3"};
+        for (int i=0; i< aArr.length;i++){
+            String actualResult = controller.createStr(aArr[i],bArr[i],result[i]);
+            Assertions.assertEquals(expected[i],actualResult);
+        }
+    }
 }
