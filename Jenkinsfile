@@ -27,7 +27,6 @@ pipeline {
             steps{
                 withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'token-for-jenkins'){
                     bat 'mvn sonar:sonar'
-                    waitForQualityGate abortPipeline: true
                 }
             }
         }
@@ -40,7 +39,9 @@ pipeline {
 
         stage('Quality Gate'){
             steps{
-                waitForQualityGate abortPipeline: true
+                withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'token-for-jenkins'){
+                    waitForQualityGate abortPipeline: true
+                }
             }
         }
 
