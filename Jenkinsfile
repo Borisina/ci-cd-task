@@ -1,5 +1,9 @@
 pipeline{
     agent any
+    environment{
+        PATH = "D:\\maven\\bin"
+        JAVA_HOME = "D:\\.jdks\\corretto-17.0.3"
+    }
     stages{
         stage('Build'){
             steps{
