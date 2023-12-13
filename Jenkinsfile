@@ -27,6 +27,7 @@ pipeline {
             steps{
                 withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'token-for-jenkins'){
                     bat 'mvn sonar:sonar'
+                    waitForQualityGate abortPipeline: true
                 }
             }
         }
@@ -39,7 +40,6 @@ pipeline {
 
         stage('Deploy'){
             steps{
-                waitForQualityGate abortPipeline: false, credentialsId: 'token-for-jenkins'
                 deploy adapters: [tomcat9( credentialsId: 'tomcat-9-token', path: '', url: 'http://localhost:8088/')], contextPath: null, onFailure: false, war: '**/*.war'
             }
         }
