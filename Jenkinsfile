@@ -38,6 +38,14 @@ pipeline {
             }
         }
 
+        stage('Quality Gate'){
+            steps{
+                withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'token-for-jenkins'){
+                    waitForQualityGate abortPipeline: true
+                }
+            }
+        }
+
         stage('Deploy'){
             steps{
                 deploy adapters: [tomcat9( credentialsId: 'tomcat-9-token', path: '', url: 'http://localhost:8088/')], contextPath: null, onFailure: false, war: '**/*.war'
