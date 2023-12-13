@@ -1,9 +1,12 @@
 pipeline {
     agent any
+    environment{
+        SCANNER_HOME = tool 'SQScanner'
+    }
     tools {
-            maven 'MavenLocal'
-            jdk 'jdk17'
-        }
+        maven 'MavenLocal'
+        jdk 'jdk17'
+    }
     stages {
         stage ('Initialize') {
             steps {
