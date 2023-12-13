@@ -8,7 +8,7 @@ pipeline{
         }
         stage('SonarQube Analysis'){
             steps{
-                withSonarQubeEnv(credentialsId: 'token-for-jenkins') {
+                withSonarQubeEnv('SonarQube1'){
                     bat 'mvn sonar:sonar'
                 }
             }
