@@ -19,7 +19,7 @@ pipeline {
 
         stage ('Build') {
             steps {
-                bat 'mvn clean compile test'
+                bat 'mvn clean compile test package'
             }
         }
 
@@ -34,6 +34,13 @@ pipeline {
         stage('JaCoCo'){
             steps{
                 jacoco()
+            }
+        }
+
+        stage('Deploy'){
+            steps{
+                waitForQualityGate abortPipeline: false, credentialsId: 'token-for-jenkins'
+                deploy adapters: [tomcat9( credentialsId: 'tomcat-9-token', path: '', url: 'http://localhost:8088/')], contextPath: null, onFailure: false, war: '**/*.war'
             }
         }
     }
