@@ -19,13 +19,13 @@ pipeline {
 
         stage ('Build') {
             steps {
-                bat 'mvn clean compile test package'
+                bat 'mvn clean compile test'
             }
         }
 
         stage('SonarQube Analysis'){
             steps{
-                withSonarQubeEnv('SonarQube1'){
+                withSonarQubeEnv(installationName: 'SonarQube', credentialsId: 'token-for-jenkins'){
                     bat 'mvn sonar:sonar'
                 }
             }
