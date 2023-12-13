@@ -1,10 +1,16 @@
 pipeline{
     agent any
-    environment{
-        PATH = "D:\\maven\\bin"
-        JAVA_HOME = "D:\\.jdks\\corretto-17.0.3"
+    tools{
+        maven "MAVEN"
+        jdk "JDK"
     }
     stages{
+        stage ('Initialize') {
+            steps {
+                echo "PATH = %PATH%"
+                echo "M2_HOME = %JAVA_HOME%"
+            }
+        }
         stage('Build'){
             steps{
                 bat 'mvn clean compile test package'
