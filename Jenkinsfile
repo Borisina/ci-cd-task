@@ -19,6 +19,14 @@ pipeline {
                 bat 'mvn clean compile test package'
             }
         }
+
+        stage('SonarQube Analysis'){
+            steps{
+                withSonarQubeEnv('SonarQube1'){
+                    bat 'mvn sonar:sonar'
+                }
+            }
+        }
     }
 }
 
