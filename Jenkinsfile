@@ -9,7 +9,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-                bat 'mvn clean compile test package'
+                sh 'mvn clean compile test package'
             }
         }
         stage('SonarQube Analysis'){
