@@ -11,11 +11,10 @@
 	<groupId>com.kolya</groupId>
 	<artifactId>ci-cd-task</artifactId>
 	<packaging>war</packaging>
-	<version>0</version>
+	<version>1</version>
 	<name>ci-cd-task</name>
 	<description>ci-cd-task</description>
 	<properties>
-		<tomcat.version>9.0.68</tomcat.version>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
